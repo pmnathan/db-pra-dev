@@ -9,6 +9,7 @@ resource "vault_mount" "db_pra" {
 resource "vault_database_secret_backend_connection" "mysql" {
   backend           =   vault_mount.db_pra.path
   name              =   "mysqlnew"
+  allowed_roles     =   "*"
   mysql {
     connection_url      = "root:test123@tcp(localhost:3306)/"
     username_template   = "{{.DisplayName | replace \"@hashicorp.com\" \"\" }}-{{.RoleName}}-{{unix_time}}-{{random 8}}"
