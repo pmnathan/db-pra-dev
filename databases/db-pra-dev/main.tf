@@ -22,7 +22,7 @@ locals {
 }
 
 module "main" {
-  source   = "../../modules/dbroleuserpolicy"
+  source   = "../../modules/dbroleentitypolicy"
   for_each = toset(local.roles)
 
   json_data    = local.raw_data
