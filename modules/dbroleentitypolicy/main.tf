@@ -35,40 +35,18 @@ resource "vault_identity_group_policies" "policies" {
   group_id = vault_identity_group.db_role_group.id
 }
 
-
-
-data "vault_identity_entity" "user" {
-  //for_each = toset(local.approved_users)
-  //entity_name = each.value
-  entity_name = "prakash_manglanathan"
-}
-
-locals {
-  //entity_ids = data.vault_identity_entity.user.*.id
-  entity_ids = data.vault_identity_entity.user.id
-}
-
-resource "vault_identity_group_member_entity_ids" "group_user" {
-  exclusive = false
-  group_id = vault_identity_group.db_role_group.id
-  #member_entity_ids = [join("", [data.vault_identity_entity.user.id])]
-  member_entity_ids = [local.entity_ids]
-}
-
-
-/*
 data "vault_identity_entity" "user" {
   for_each = toset(local.approved_users)
   entity_name = each.value
 }
 
 locals {
-  entity_ids = data.vault_identity_entity.user.*.id
+  entity_ids = [for  v in data.vault_identity_entity.user: "${v.id}"]
 }
 
 resource "vault_identity_group_member_entity_ids" "group_user" {
   exclusive = false
   group_id = vault_identity_group.db_role_group.id
-  member_entity_ids = [local.entity_ids]
+  member_entity_ids = local.entity_ids
 }
-    */
+    
