@@ -2,13 +2,13 @@ provider "vault" {
 }
 
 resource "vault_mount" "db_pra" {
-  path = "dbs2-pra"
+  path = "db-pra"
   type = "database"
 }
 
 resource "vault_database_secret_backend_connection" "mysql" {
   backend       = vault_mount.db_pra.path
-  name          = "mysqlnew"
+  name          = "mysql"
   allowed_roles = ["*"]
   mysql {
     connection_url    = "root:test123@tcp(localhost:3306)/"
