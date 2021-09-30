@@ -26,6 +26,10 @@ resource "vault_identity_group" "db_role_group" {
   metadata = {
     version = "2"
   }
+
+  depends_on = [
+    vault_policy.db_role_policy
+  ]
 }
 
 resource "vault_identity_group_policies" "policies" {
