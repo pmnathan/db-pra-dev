@@ -33,6 +33,9 @@ resource "vault_identity_group_policies" "policies" {
     "${var.backend_path}-${var.role_name}",
   ]
   group_id = vault_identity_group.db_role_group.id
+  depends_on = [
+    vault_policy.db_role_policy
+  ]
 }
 
 data "vault_identity_entity" "user" {
