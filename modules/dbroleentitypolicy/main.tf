@@ -27,6 +27,8 @@ resource "vault_identity_group" "db_role_group" {
     version = "2"
   }
 
+  external_policies = true
+
   depends_on = [
     vault_policy.db_role_policy
   ]
