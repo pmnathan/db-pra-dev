@@ -35,6 +35,8 @@ resource "vault_identity_group_policies" "policies" {
   group_id = vault_identity_group.db_role_group.id
 }
 
+
+/*
 data "vault_identity_entity" "user" {
   //for_each = toset(local.approved_users)
   //entity_name = each.value
@@ -50,5 +52,22 @@ resource "vault_identity_group_member_entity_ids" "group_user" {
   exclusive = false
   group_id = vault_identity_group.db_role_group.id
   #member_entity_ids = [join("", [data.vault_identity_entity.user.id])]
+  member_entity_ids = [local.entity_ids]
+}
+*/
+
+
+data "vault_identity_entity" "user" {
+  for_each = toset(local.approved_users)
+  entity_name = each.value
+}
+
+locals {
+  entity_ids = data.vault_identity_entity.user.*.id
+}
+
+resource "vault_identity_group_member_entity_ids" "group_user" {
+  exclusive = false
+  group_id = vault_identity_group.db_role_group.id
   member_entity_ids = [local.entity_ids]
 }
