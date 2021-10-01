@@ -14,21 +14,6 @@
                 "prakash_manglanathan",
                 "dean_richardson"
             ]
-        },
-        {
-            "role": "admin",
-            "creation_statement" : "CREATE USER '{{name}}'@'%' IDENTIFIED BY '{{password}}';GRANT SELECT ON *.* TO '{{name}}'@'%';",
-            "approvedusers": [
-                "prakash_manglanathan",
-                "greg_lorang"
-            ]
-        },
-        {
-            "role": "demo",
-            "creation_statement" : "CREATE USER '{{name}}'@'%' IDENTIFIED BY '{{password}}';GRANT SELECT ON *.* TO '{{name}}'@'%';",
-            "approvedusers": [
-                "greg_lorang"
-            ]
         }
     ]
 }
