@@ -20,7 +20,8 @@
             "creation_statement" : "CREATE USER '{{name}}'@'%' IDENTIFIED BY '{{password}}';GRANT SELECT ON *.* TO '{{name}}'@'%';",
             "approvedusers": [
                 "prakash_manglanathan",
-                "dean_richardson"
+                "dean_richardson",
+                "shan_sham"
             ]
         }
     ]
