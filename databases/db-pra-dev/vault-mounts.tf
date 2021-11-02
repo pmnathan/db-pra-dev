@@ -10,8 +10,8 @@ resource "vault_generic_secret" "example" {
 
   data_json = <<EOT
 {
-  "username":   "bar",
-  "password": "cheese"
+  "username":   "${var.db_username}",
+  "password":   "${var.db_password}"
 }
 EOT
 }
