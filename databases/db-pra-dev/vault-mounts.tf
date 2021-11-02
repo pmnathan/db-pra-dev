@@ -5,6 +5,21 @@ resource "vault_mount" "kvv2-example" {
 }
 
 
+resource "vault_generic_secret" "example" {
+  path = "version2-example"
+
+  data_json = <<EOT
+{
+  "username":   "bar",
+  "password": "cheese"
+}
+EOT
+}
+
+
+
+
+
 resource "vault_mount" "transit-example" {
   path        = "transit-example"
   type        = "transit"
