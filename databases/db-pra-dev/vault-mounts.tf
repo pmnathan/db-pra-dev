@@ -6,7 +6,7 @@ resource "vault_mount" "kvv2-example" {
 
 
 resource "vault_generic_secret" "example" {
-  path = "version2-example"
+  path = "version2-example/db"
 
   data_json = <<EOT
 {
