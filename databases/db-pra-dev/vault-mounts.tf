@@ -29,6 +29,17 @@ EOT
 }
 
 
+resource "vault_generic_secret" "example3" {
+  path = "version2-example/static_apikey"
+
+  data_json = <<EOT
+{
+  "api_key":   "${var.db_username}"
+}
+EOT
+}
+
+
 
 
 
